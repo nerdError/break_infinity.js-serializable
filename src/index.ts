@@ -727,7 +727,7 @@ export default class Decimal {
     return parseFloat(rounded.toFixed(Math.max(len - numDigits, 0)));
   }
 
-  public toString() {
+  public string() {
     if (isNaN(this.m) || isNaN(this.e)) {
       return "NaN";
     }
@@ -819,11 +819,11 @@ export default class Decimal {
   }
 
   public valueOf() {
-    return this.toString();
+    return this.string();
   }
 
   public toJSON() {
-    return this.toString();
+    return this.string();
   }
 
   public toStringWithDecimalPlaces(places: number) {

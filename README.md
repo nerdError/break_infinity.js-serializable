@@ -1,4 +1,11 @@
-[![NPM](https://img.shields.io/npm/v/break_infinity.js.svg)](https://www.npmjs.com/package/break_infinity.js)
+Forked from: https://github.com/Patashu/break_infinity.js
+
+Only change: remove `Decimal.toString()`, because you need it's poor JavaScript implementation to use `JSON.Stringify()`
+
+```javascript
+Decimal.toString()
+```
+
 
 A replacement for https://github.com/MikeMcl/decimal.js/ for incremental games which need
 to deal with very large numbers (bigger in magnitude than 1e308, up to as much as 1e9e15)
@@ -49,7 +56,7 @@ The library exports a single class Decimal, constructor of which accepts a
     const z = new Decimal(x);
     const equals = x.equals(y) && y.equals(z) && x.equals(z); // true
 ```
-    
+
 The methods that return a Decimal can be chained.
 
 ```javascript
@@ -64,7 +71,7 @@ For the complete list of functions refer to
 [Typescript definitions](https://github.com/Patashu/break_infinity.js/blob/master/break_infinity.d.ts),
 [decimal.js docs](http://mikemcl.github.io/decimal.js/)
 or check out
-[generated API docs](https://patashu.github.io/break_infinity.js/classes/decimal.html) 
+[generated API docs](https://patashu.github.io/break_infinity.js/classes/decimal.html)
 
 ## Benchmarks
 

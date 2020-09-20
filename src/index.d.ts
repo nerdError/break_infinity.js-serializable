@@ -39,8 +39,8 @@ export default class Decimal {
     static recip(value: DecimalSource): Decimal;
     static reciprocal(value: DecimalSource): Decimal;
     static reciprocate(value: DecimalSource): Decimal;
-    static cmp(value: DecimalSource, other: DecimalSource): 0 | 1 | -1;
-    static compare(value: DecimalSource, other: DecimalSource): 0 | 1 | -1;
+    static cmp(value: DecimalSource, other: DecimalSource): 1 | 0 | -1;
+    static compare(value: DecimalSource, other: DecimalSource): 1 | 0 | -1;
     static eq(value: DecimalSource, other: DecimalSource): boolean;
     static equals(value: DecimalSource, other: DecimalSource): boolean;
     static neq(value: DecimalSource, other: DecimalSource): boolean;
@@ -54,8 +54,8 @@ export default class Decimal {
     static clamp(value: DecimalSource, min: DecimalSource, max: DecimalSource): Decimal;
     static clampMin(value: DecimalSource, min: DecimalSource): Decimal;
     static clampMax(value: DecimalSource, max: DecimalSource): Decimal;
-    static cmp_tolerance(value: DecimalSource, other: DecimalSource, tolerance: DecimalSource): 0 | 1 | -1;
-    static compare_tolerance(value: DecimalSource, other: DecimalSource, tolerance: DecimalSource): 0 | 1 | -1;
+    static cmp_tolerance(value: DecimalSource, other: DecimalSource, tolerance: DecimalSource): 1 | 0 | -1;
+    static compare_tolerance(value: DecimalSource, other: DecimalSource, tolerance: DecimalSource): 1 | 0 | -1;
     static eq_tolerance(value: DecimalSource, other: DecimalSource, tolerance: DecimalSource): boolean;
     static equals_tolerance(value: DecimalSource, other: DecimalSource, tolerance: DecimalSource): boolean;
     static neq_tolerance(value: DecimalSource, other: DecimalSource, tolerance: DecimalSource): boolean;
@@ -176,8 +176,8 @@ export default class Decimal {
     /**
      * -1 for less than value, 0 for equals value, 1 for greater than value
      */
-    cmp(value: DecimalSource): 0 | 1 | -1;
-    compare(value: DecimalSource): 0 | 1 | -1;
+    cmp(value: DecimalSource): 1 | 0 | -1;
+    compare(value: DecimalSource): 1 | 0 | -1;
     eq(value: DecimalSource): boolean;
     equals(value: DecimalSource): boolean;
     neq(value: DecimalSource): boolean;
@@ -191,8 +191,8 @@ export default class Decimal {
     clamp(min: DecimalSource, max: DecimalSource): Decimal;
     clampMin(min: DecimalSource): Decimal;
     clampMax(max: DecimalSource): Decimal;
-    cmp_tolerance(value: DecimalSource, tolerance: DecimalSource): 0 | 1 | -1;
-    compare_tolerance(value: DecimalSource, tolerance: DecimalSource): 0 | 1 | -1;
+    cmp_tolerance(value: DecimalSource, tolerance: DecimalSource): 1 | 0 | -1;
+    compare_tolerance(value: DecimalSource, tolerance: DecimalSource): 1 | 0 | -1;
     /**
      * Tolerance is a relative tolerance, multiplied by the greater of the magnitudes of the two arguments.
      * For example, if you put in 1e-9, then any number closer to the
