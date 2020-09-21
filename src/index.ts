@@ -822,9 +822,11 @@ export default class Decimal {
     return this.string();
   }
 
+  /*
   public toJSON() {
     return this.string();
   }
+  */
 
   public toStringWithDecimalPlaces(places: number) {
     return this.toExponential(places);

@@ -146,7 +146,6 @@ export default class Decimal {
     toFixed(places: number): string;
     toPrecision(places: number): string;
     valueOf(): string;
-    toJSON(): string;
     toStringWithDecimalPlaces(places: number): string;
     abs(): Decimal;
     neg(): Decimal;

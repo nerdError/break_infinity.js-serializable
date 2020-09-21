@@ -796,10 +796,12 @@
     Decimal.prototype.valueOf = function () {
       return this.string();
     };
-
-    Decimal.prototype.toJSON = function () {
+    /*
+    public toJSON() {
       return this.string();
-    };
+    }
+    */
+
 
     Decimal.prototype.toStringWithDecimalPlaces = function (places) {
       return this.toExponential(places);
