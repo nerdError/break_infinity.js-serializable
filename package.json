@@ -1,7 +1,7 @@
 {
-  "name": "break_infinity.js",
+  "name": "break_infinity.s.js",
   "version": "1.2.0",
-  "description": "A replacement for decimal.js for incremental games who want to deal with very large numbers (bigger in magnitude than 1e308, up to as much as 1e(9e15) ) and want to prioritize speed over accuracy.",
+  "description": "Fork of break_infinity.js by Patashu. All changes made to allow properly serializing the Decimal objects",
   "main": "dist/break_infinity.js",
   "module": "dist/break_infinity.esm.js",
   "unpkg": "dist/break_infinity.min.js",
