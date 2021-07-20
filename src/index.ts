@@ -96,19 +96,19 @@ export type DecimalSource = Decimal | number | string;
 export default class Decimal {
 
   get m() {
-    return this.mantissa;
+    return this._m;
   }
 
   set m(value) {
-    this.mantissa = value;
+    this._m = value;
   }
 
   get e() {
-    return this.exponent;
+    return this._e;
   }
 
   set e(value) {
-    this.exponent = value;
+    this._e = value;
   }
 
   get s() {
@@ -543,13 +543,13 @@ export default class Decimal {
    * or multiply by 10 and subtract 1 from exponent until it is 1 or greater).
    * Infinity/-Infinity/NaN will cause bad things to happen.
    */
-  public mantissa = NaN;
+  public _m = NaN;
 
   /**
    * A number (integer) between -EXP_LIMIT and EXP_LIMIT.
    * Non-integral/out of bounds will cause bad things to happen.
    */
-  public exponent = NaN;
+  public _e = NaN;
 
   constructor(value?: DecimalSource) {
     if (value === undefined) {
@@ -1439,15 +1439,15 @@ export default class Decimal {
   }
 
   public dp() {
-    if (!isFinite(this.mantissa)) {
+    if (!isFinite(this._m)) {
       return NaN;
     }
-    if (this.exponent >= MAX_SIGNIFICANT_DIGITS) {
+    if (this._e >= MAX_SIGNIFICANT_DIGITS) {
       return 0;
     }
 
-    const mantissa = this.mantissa;
-    let places = -this.exponent;
+    const mantissa = this._m;
+    let places = -this._e;
     let e = 1;
     while (Math.abs(Math.round(mantissa * e) / e - mantissa) > ROUND_TOLERANCE) {
       e *= 10;

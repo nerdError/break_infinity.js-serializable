@@ -119,12 +119,12 @@ export default class Decimal {
      * or multiply by 10 and subtract 1 from exponent until it is 1 or greater).
      * Infinity/-Infinity/NaN will cause bad things to happen.
      */
-    mantissa: number;
+    _m: number;
     /**
      * A number (integer) between -EXP_LIMIT and EXP_LIMIT.
      * Non-integral/out of bounds will cause bad things to happen.
      */
-    exponent: number;
+    _e: number;
     constructor(value?: DecimalSource);
     /**
      * When mantissa is very denormalized, use this to normalize much faster.

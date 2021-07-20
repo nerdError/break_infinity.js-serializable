@@ -85,13 +85,13 @@ function () {
      * or multiply by 10 and subtract 1 from exponent until it is 1 or greater).
      * Infinity/-Infinity/NaN will cause bad things to happen.
      */
-    this.mantissa = NaN;
+    this._m = NaN;
     /**
      * A number (integer) between -EXP_LIMIT and EXP_LIMIT.
      * Non-integral/out of bounds will cause bad things to happen.
      */
 
-    this.exponent = NaN;
+    this._e = NaN;
 
     if (value === undefined) {
       this.m = 0;
@@ -107,20 +107,20 @@ function () {
 
   Object.defineProperty(Decimal.prototype, "m", {
     get: function get() {
-      return this.mantissa;
+      return this._m;
     },
     set: function set(value) {
-      this.mantissa = value;
+      this._m = value;
     },
     enumerable: false,
     configurable: true
   });
   Object.defineProperty(Decimal.prototype, "e", {
     get: function get() {
-      return this.exponent;
+      return this._e;
     },
     set: function set(value) {
-      this.exponent = value;
+      this._e = value;
     },
     enumerable: false,
     configurable: true
@@ -1440,16 +1440,16 @@ function () {
   };
 
   Decimal.prototype.dp = function () {
-    if (!isFinite(this.mantissa)) {
+    if (!isFinite(this._m)) {
       return NaN;
     }
 
-    if (this.exponent >= MAX_SIGNIFICANT_DIGITS) {
+    if (this._e >= MAX_SIGNIFICANT_DIGITS) {
       return 0;
     }
 
-    var mantissa = this.mantissa;
-    var places = -this.exponent;
+    var mantissa = this._m;
+    var places = -this._e;
     var e = 1;
 
     while (Math.abs(Math.round(mantissa * e) / e - mantissa) > ROUND_TOLERANCE) {
