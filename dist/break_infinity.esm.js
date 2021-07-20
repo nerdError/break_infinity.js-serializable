@@ -125,6 +125,13 @@ function () {
     enumerable: false,
     configurable: true
   });
+  Object.defineProperty(Decimal.prototype, "exponent", {
+    get: function get() {
+      return this._e;
+    },
+    enumerable: false,
+    configurable: true
+  });
   Object.defineProperty(Decimal.prototype, "s", {
     get: function get() {
       return this.sign();
@@ -139,6 +146,13 @@ function () {
       if (this.sgn() !== value) {
         this.m = -this.m;
       }
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(Decimal.prototype, "mantissa", {
+    get: function get() {
+      return this._m;
     },
     enumerable: false,
     configurable: true

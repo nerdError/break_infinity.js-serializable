@@ -6,8 +6,10 @@ export default class Decimal {
     get m(): number;
     set m(value: number);
     get e(): number;
+    get exponent(): number;
     set e(value: number);
     get s(): number;
+    get mantissa(): number;
     set s(value: number);
     static fromMantissaExponent(mantissa: number, exponent: number): Decimal;
     static fromMantissaExponent_noNormalize(mantissa: number, exponent: number): Decimal;

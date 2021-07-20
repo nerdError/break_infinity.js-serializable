@@ -107,6 +107,10 @@ export default class Decimal {
     return this._e;
   }
 
+  get exponent() {
+    return this._e;
+  }
+
   set e(value) {
     this._e = value;
   }
@@ -114,6 +118,11 @@ export default class Decimal {
   get s() {
     return this.sign();
   }
+
+  get mantissa() {
+    return this._m;
+  }
+
 
   set s(value) {
     if (value === 0) {

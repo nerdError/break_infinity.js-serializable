@@ -1,6 +1,6 @@
 {
   "name": "break_infinity.s.js",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Fork of break_infinity.js by Patashu. All changes made to allow properly serializing the Decimal objects",
   "main": "dist/break_infinity.js",
   "module": "dist/break_infinity.esm.js",
