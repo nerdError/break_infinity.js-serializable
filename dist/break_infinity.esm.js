@@ -103,6 +103,8 @@ function () {
     } else {
       this.fromString(value);
     }
+
+    Decimal.objectsCreated++;
   }
 
   Object.defineProperty(Decimal.prototype, "m", {
@@ -921,6 +923,42 @@ function () {
     return ME(Math.round(1e14 * biggerDecimal.m + 1e14 * smallerDecimal.m * powerOf10(smallerDecimal.e - biggerDecimal.e)), biggerDecimal.e - 14);
   };
 
+  Decimal.prototype.doPlus = function (value) {
+    // Code copy-pasted from this.plus
+    var decimal = D(value);
+
+    if (this.m === 0) {
+      this.m = decimal.m;
+      this.e = decimal.e;
+      return this;
+    }
+
+    var biggerDecimal;
+    var smallerDecimal;
+
+    if (this.e >= decimal.e) {
+      biggerDecimal = this;
+      smallerDecimal = decimal;
+    } else {
+      biggerDecimal = decimal;
+      smallerDecimal = this;
+    }
+
+    if (biggerDecimal.e - smallerDecimal.e > MAX_SIGNIFICANT_DIGITS) {
+      this.m = biggerDecimal.m;
+      this.e = biggerDecimal.e;
+      return this;
+    }
+
+    this.m = Math.round(1e14 * biggerDecimal.m + 1e14 * smallerDecimal.m * powerOf10(smallerDecimal.e - biggerDecimal.e));
+    this.e = biggerDecimal.e - 14;
+    return this;
+  };
+
+  Decimal.prototype.doMinus = function (value) {
+    return this.doPlus(D(value).neg());
+  };
+
   Decimal.prototype.plus = function (value) {
     return this.add(value);
   };
@@ -952,6 +990,29 @@ function () {
 
     var decimal = typeof value === "string" ? new Decimal(value) : value;
     return ME(this.m * decimal.m, this.e + decimal.e);
+  };
+
+  Decimal.prototype.doTimes = function (value) {
+    if (typeof value === "number") {
+      if (value < 1e307 && value > -1e307) {
+        this.m = this.m * value;
+        this.e = this.e;
+        return this;
+      }
+
+      this.m = this.m * 1e-307 * value;
+      this.e = this.e + 307;
+      return this;
+    }
+
+    var decimal = typeof value === "string" ? new Decimal(value) : value;
+    this.m = this.m * decimal.m;
+    this.e = this.e + decimal.e;
+    return this;
+  };
+
+  Decimal.prototype.doDivide = function (value) {
+    return this.doTimes(D(value).recip());
   };
 
   Decimal.prototype.multiply = function (value) {
@@ -1502,6 +1563,7 @@ function () {
     enumerable: false,
     configurable: true
   });
+  Decimal.objectsCreated = 0;
   return Decimal;
 }();
 var MAX_VALUE = ME_NN(1, EXP_LIMIT);

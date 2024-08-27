@@ -127,6 +127,7 @@ export default class Decimal {
      * Non-integral/out of bounds will cause bad things to happen.
      */
     _e: number;
+    static objectsCreated: number;
     constructor(value?: DecimalSource);
     /**
      * When mantissa is very denormalized, use this to normalize much faster.
@@ -160,11 +161,15 @@ export default class Decimal {
     ceil(): Decimal;
     trunc(): Decimal;
     add(value: DecimalSource): Decimal;
+    doPlus(value: DecimalSource): Decimal;
+    doMinus(value: DecimalSource): Decimal;
     plus(value: DecimalSource): Decimal;
     sub(value: DecimalSource): Decimal;
     subtract(value: DecimalSource): Decimal;
     minus(value: DecimalSource): Decimal;
     mul(value: DecimalSource): Decimal;
+    doTimes(value: DecimalSource): Decimal;
+    doDivide(value: DecimalSource): Decimal;
     multiply(value: DecimalSource): Decimal;
     times(value: DecimalSource): Decimal;
     div(value: DecimalSource): Decimal;

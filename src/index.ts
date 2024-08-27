@@ -560,6 +560,8 @@ export default class Decimal {
    */
   public _e = NaN;
 
+  public static objectsCreated = 0;
+
   constructor(value?: DecimalSource) {
     if (value === undefined) {
       this.m = 0;
@@ -571,6 +573,8 @@ export default class Decimal {
     } else {
       this.fromString(value);
     }
+
+    Decimal.objectsCreated++;
   }
 
   /**
@@ -942,6 +946,42 @@ export default class Decimal {
       biggerDecimal.e - 14);
   }
 
+  public doPlus(value: DecimalSource): Decimal {
+    // Code copy-pasted from this.plus
+    const decimal = D(value);
+
+    if (this.m === 0) {
+      this.m = decimal.m;
+      this.e = decimal.e;
+      return this;
+    }
+
+    let biggerDecimal;
+    let smallerDecimal;
+    if (this.e >= decimal.e) {
+      biggerDecimal = this;
+      smallerDecimal = decimal;
+    } else {
+      biggerDecimal = decimal;
+      smallerDecimal = this;
+    }
+
+    if (biggerDecimal.e - smallerDecimal.e > MAX_SIGNIFICANT_DIGITS) {
+      this.m = biggerDecimal.m;
+      this.e = biggerDecimal.e;
+      return this;
+    }
+
+    this.m = Math.round(1e14 * biggerDecimal.m + 1e14 * smallerDecimal.m * powerOf10(smallerDecimal.e - biggerDecimal.e));
+    this.e = biggerDecimal.e - 14;
+  
+    return this;
+  }
+
+  public doMinus(value: DecimalSource) {
+    return this.doPlus(D(value).neg());
+  }
+
   public plus(value: DecimalSource) {
     return this.add(value);
   }
@@ -971,6 +1011,31 @@ export default class Decimal {
     }
     const decimal = typeof value === "string" ? new Decimal(value) : value;
     return ME(this.m * decimal.m, this.e + decimal.e);
+  }
+
+  public doTimes(value: DecimalSource): Decimal {
+      if (typeof value === "number") {
+        if (value < 1e307 && value > -1e307) {
+          this.m = this.m * value;
+          this.e = this.e;
+          return this;
+        }
+
+        this.m = this.m * 1e-307 * value
+        this.e = this.e + 307;
+        return this;
+      }
+
+      const decimal = typeof value === "string" ? new Decimal(value) : value;
+
+      this.m = this.m * decimal.m;
+      this.e = this.e + decimal.e;
+
+      return this;
+  }
+  
+  public doDivide(value: DecimalSource): Decimal {
+    return this.doTimes(D(value).recip());
   }
 
   public multiply(value: DecimalSource) {
