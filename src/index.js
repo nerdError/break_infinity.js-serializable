@@ -727,11 +727,17 @@ var Decimal = /** @class */ (function () {
         }
         return this;
     };
+
     Decimal.prototype.add = function (value) {
+        return new Decimal(this).doAdd(value);
+    };
+    
+    Decimal.prototype.doAdd = function (value) {
         // figure out which is bigger, shrink the mantissa of the smaller
         // by the difference in exponents, add mantissas, normalize and return
         // TODO: Optimizations and simplification may be possible, see https://github.com/Patashu/break_infinity.js/issues/8
         var decimal = D(value);
+
         if (this.m === 0) {
             return decimal;
         }
@@ -753,14 +759,22 @@ var Decimal = /** @class */ (function () {
         }
         // Have to do this because adding numbers that were once integers but scaled down is imprecise.
         // Example: 299 + 18
-        return ME(Math.round(1e14 * biggerDecimal.m +
-            1e14 * smallerDecimal.m * powerOf10(smallerDecimal.e - biggerDecimal.e)), biggerDecimal.e - 14);
+
+        const m = Math.round(1e14 * biggerDecimal.m +
+            1e14 * smallerDecimal.m * powerOf10(smallerDecimal.e - biggerDecimal.e));
+            
+        const e = biggerDecimal.e - 14;
+
+        this.fromMantissaExponent(m, e);
+        return this;
     };
-    Decimal.prototype.plus = function (value) {
-        return this.add(value);
-    };
+
     Decimal.prototype.sub = function (value) {
         return this.add(D(value).neg());
+    };
+
+    Decimal.prototype.plus = function (value) {
+        return this.add(value);
     };
     Decimal.prototype.subtract = function (value) {
         return this.sub(value);
@@ -768,6 +782,8 @@ var Decimal = /** @class */ (function () {
     Decimal.prototype.minus = function (value) {
         return this.sub(value);
     };
+
+
     Decimal.prototype.mul = function (value) {
         // This version avoids an extra conversion to Decimal, if possible. Since the
         // mantissa is -10...10, any number short of MAX/10 can be safely multiplied in
