@@ -158,32 +158,6 @@ var Decimal = /** @class */ (function () {
         return new Decimal().fromValue(value);
     };
 
-    // Changing Decimal and not creating new objects for no fucking reason
-    Decimal.prototype.setFromMantissaExponent = function (mantissa, exponent) {
-        this.fromMantissaExponent(mantissa, exponent);
-        return this;
-    };
-    Decimal.prototype.setFromMantissaExponent_noNormalize = function (mantissa, exponent) {
-        this.fromMantissaExponent_noNormalize(mantissa, exponent);
-        return this;
-    };
-    Decimal.prototype.setFromDecimal = function (value) {
-        this.fromDecimal(value);
-        return this;
-    };
-    Decimal.prototype.setFromNumber = function (value) {
-        this.fromNumber(value);
-        return this;
-    };
-    Decimal.prototype.setFromString = function (value) {
-        this.fromString(value);
-        return this;
-    };
-    Decimal.prototype.setFromValue = function (value) {
-        this.fromValue(value);
-        return this;
-    };
-
     Decimal.fromValue_noAlloc = function (value) {
         return value instanceof Decimal ? value : new Decimal(value);
     };

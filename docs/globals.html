@@ -111,7 +111,12 @@
 	<div class="content-wrap">
 		<div class="tsd-panel tsd-typography">
 			<p>Forked from: <a href="https://github.com/Patashu/break_infinity.js">https://github.com/Patashu/break_infinity.js</a></p>
-			<p>Only change: I removed <code>Decimal.toString()</code> and <code>Decimal.toJson()</code>, since it doesn&#39;t allow you to use <code>JSON.Stringify()</code></p>
+			<p>My version of break_infinity.js
+			I mostly doing random changes to fit with my game&#39;s code!</p>
+			<ul>
+				<li>Removed <code>Decimal.toString()</code> and <code>Decimal.toJson()</code>, since it doesn&#39;t allow you to use <code>JSON.Stringify()</code> (at least i remember it being so, probably need to recheck that one. but anyway main reason i did it, Decimal object wasn&#39;t able to correctly be saved/loaded with json because of it. now it works like a charm)</li>
+				<li>Added <code>doPlus</code>, <code>doMinus</code>, <code>doTimes</code>, <code>doDivide</code> functions, to change a Decimal object in-place, without creating a new one</li>
+			</ul>
 		</div>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
@@ -168,7 +173,7 @@
 				<div class="tsd-signature tsd-kind-icon">Decimal<wbr>Source<span class="tsd-signature-symbol">:</span> <a href="classes/decimal.html" class="tsd-signature-type">Decimal</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L91">index.ts:91</a></li>
+						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L91">index.ts:91</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -181,7 +186,7 @@
 				<div class="tsd-signature tsd-kind-icon">EXP_<wbr>LIMIT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">9000000000000000</span><span class="tsd-signature-symbol"> = 9000000000000000</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L8">index.ts:8</a></li>
+						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L8">index.ts:8</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -191,7 +196,7 @@
 				<div class="tsd-signature tsd-kind-icon">MAX_<wbr>SIGNIFICANT_<wbr>DIGITS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">17</span><span class="tsd-signature-symbol"> = 17</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L5">index.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L5">index.ts:5</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -201,7 +206,7 @@
 				<div class="tsd-signature tsd-kind-icon">MAX_<wbr>VALUE<span class="tsd-signature-symbol">:</span> <a href="classes/decimal.html" class="tsd-signature-type">Decimal</a><span class="tsd-signature-symbol"> = ME_NN(1, EXP_LIMIT)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L1485">index.ts:1485</a></li>
+						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L1550">index.ts:1550</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -211,7 +216,7 @@
 				<div class="tsd-signature tsd-kind-icon">MIN_<wbr>VALUE<span class="tsd-signature-symbol">:</span> <a href="classes/decimal.html" class="tsd-signature-type">Decimal</a><span class="tsd-signature-symbol"> = ME_NN(1, -EXP_LIMIT)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L1486">index.ts:1486</a></li>
+						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L1551">index.ts:1551</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -221,7 +226,7 @@
 				<div class="tsd-signature tsd-kind-icon">NUMBER_<wbr>EXP_<wbr>MAX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">308</span><span class="tsd-signature-symbol"> = 308</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L11">index.ts:11</a></li>
+						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L11">index.ts:11</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -231,7 +236,7 @@
 				<div class="tsd-signature tsd-kind-icon">NUMBER_<wbr>EXP_<wbr>MIN<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">-324</span><span class="tsd-signature-symbol"> = -324</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L14">index.ts:14</a></li>
+						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L14">index.ts:14</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -241,7 +246,7 @@
 				<div class="tsd-signature tsd-kind-icon">NUMBER_<wbr>MAX_<wbr>VALUE<span class="tsd-signature-symbol">:</span> <a href="classes/decimal.html" class="tsd-signature-type">Decimal</a><span class="tsd-signature-symbol"> = D(Number.MAX_VALUE)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L1487">index.ts:1487</a></li>
+						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L1552">index.ts:1552</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -251,7 +256,7 @@
 				<div class="tsd-signature tsd-kind-icon">NUMBER_<wbr>MIN_<wbr>VALUE<span class="tsd-signature-symbol">:</span> <a href="classes/decimal.html" class="tsd-signature-type">Decimal</a><span class="tsd-signature-symbol"> = D(Number.MIN_VALUE)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L1488">index.ts:1488</a></li>
+						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L1553">index.ts:1553</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -261,7 +266,7 @@
 				<div class="tsd-signature tsd-kind-icon">ROUND_<wbr>TOLERANCE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">1e-10</span><span class="tsd-signature-symbol"> = 1e-10</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L17">index.ts:17</a></li>
+						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L17">index.ts:17</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -271,7 +276,7 @@
 				<div class="tsd-signature tsd-kind-icon">power<wbr>Of10<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = (() &#x3D;&gt; {// We need this lookup table because Math.pow(10, exponent)// when exponent&#x27;s absolute value is large is slightly inaccurate.// You can fix it with the power of math... or just make a lookup table.// Faster AND simplerconst powersOf10: number[] &#x3D; [];for (let i &#x3D; NUMBER_EXP_MIN + 1; i &lt;&#x3D; NUMBER_EXP_MAX; i++) {powersOf10.push(Number(&quot;1e&quot; + i));}const indexOf0InPowersOf10 &#x3D; 323;return (power: number) &#x3D;&gt; powersOf10[power + indexOf0InPowersOf10];})()</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L19">index.ts:19</a></li>
+						<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L19">index.ts:19</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -288,7 +293,7 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L32">index.ts:32</a></li>
+								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L32">index.ts:32</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -311,7 +316,7 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L34">index.ts:34</a></li>
+								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L34">index.ts:34</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -337,7 +342,7 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L36">index.ts:36</a></li>
+								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L36">index.ts:36</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -363,7 +368,7 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L58">index.ts:58</a></li>
+								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L58">index.ts:58</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -395,7 +400,7 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L39">index.ts:39</a></li>
+								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L39">index.ts:39</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -427,7 +432,7 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L87">index.ts:87</a></li>
+								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L87">index.ts:87</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -456,7 +461,7 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L75">index.ts:75</a></li>
+								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L75">index.ts:75</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -488,7 +493,7 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/951157e/src/index.ts#L49">index.ts:49</a></li>
+								<li>Defined in <a href="https://github.com/nerdError/break_infinity.js-serializable/blob/b5585ce/src/index.ts#L49">index.ts:49</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -522,6 +527,7 @@
 						<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
 					</ul>
 					<ul class="tsd-legend">
+						<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 						<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 					</ul>
 				</div>
